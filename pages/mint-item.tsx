@@ -118,6 +118,7 @@ export default function MinItem() {
           type="file"
           name="asset"
         />
+        {/*eslint-disable-next-line @next/next/no-img-element */}
         {fileUrl && <img src={fileUrl} alt="image" />}
         <button
           className="font-bold mt-4 bg-purple-500 text-white"
