@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NftsProps } from '../interface/NftsProps';
-import { LoadNFTs, showSelfContract } from '../lib';
+import { loadNFTs, showSelfContract } from '../lib';
 import { CardItem, Loading } from '../components';
 export default function MyAssets() {
   // array of nfts
@@ -10,7 +10,7 @@ export default function MyAssets() {
   useEffect(() => {
     setLoadingState(true);
     showSelfContract().then((con) =>
-      LoadNFTs(con.tokenContract, con.marketContract, 'myItems').then((nft) => {
+      loadNFTs(con.tokenContract, con.marketContract, 'myItems').then((nft) => {
         setNFts(nft?.items);
         setLoadingState(false);
       })

@@ -1,4 +1,4 @@
 export * from './showContract';
-export * from './LoadNfts';
+export * from './loadNFTs';
 export * from './buyNFTs';
 export * from './showSelfContract';

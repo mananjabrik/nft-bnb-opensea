@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LoadNFTs, showSelfContract } from '../lib';
+import { loadNFTs, showSelfContract } from '../lib';
 import { CardItem, Loading } from '../components';
 import { NftsProps } from '../interface/NftsProps';
 
@@ -10,7 +10,7 @@ export default function CreatorDashboard() {
   useEffect(() => {
     showSelfContract().then((con) => {
       setLoadingState(true);
-      LoadNFTs(con.tokenContract, con.marketContract, 'createdItems').then(
+      loadNFTs(con.tokenContract, con.marketContract, 'createdItems').then(
         (nft) => {
           const soldItems = nft?.items.filter((i: NftsProps) => {
             const ownerdetect = '0x0000000000000000000000000000000000000000';

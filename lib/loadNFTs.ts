@@ -3,7 +3,7 @@ import axios from 'axios';
 import { NftsProps } from '../interface/NftsProps';
 import { showContract } from '.';
 
-export const LoadNFTs = async (
+export const loadNFTs = async (
   tokenContract: ethers.Contract,
   marketContract: ethers.Contract,
   changeItemFrom: 'marketItems' | 'myItems' | 'createdItems'

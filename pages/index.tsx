@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { CardItem, Loading } from '../components';
 import { NftsProps } from '../interface/NftsProps';
-import { LoadNFTs, buyNFTs, showContract } from '../lib';
+import { loadNFTs, buyNFTs, showContract } from '../lib';
 
 const Home: NextPage = () => {
   const [nfts, setNfts] = useState<NftsProps[]>(); //hooks for listing the item
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const { marketContract, tokenContract } = showContract();
   useEffect(() => {
     setLoadingState(true);
-    LoadNFTs(tokenContract, marketContract, 'marketItems').then((nft) => {
+    loadNFTs(tokenContract, marketContract, 'marketItems').then((nft) => {
       setNfts(nft?.items);
       setLoadingState(false);
     });
