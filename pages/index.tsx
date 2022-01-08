@@ -4,7 +4,11 @@ import { CardItem, Loading } from '../components';
 import { NftsProps } from '../interface/NftsProps';
 import { loadNFTs, buyNFTs, showContract } from '../lib';
 
+import { useRouter } from 'next/router';
+
 const Home: NextPage = () => {
+  const router = useRouter();
+
   const [nfts, setNfts] = useState<NftsProps[]>(); //hooks for listing the item
   const [loadingState, setLoadingState] = useState(false);
   const { marketContract, tokenContract } = showContract();
@@ -22,7 +26,14 @@ const Home: NextPage = () => {
         {loadingState === true ? <Loading /> : null}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {nfts?.map((nft, index) => (
-            <CardItem key={index} onBuy={() => buyNFTs(nft)} {...nft} />
+            <CardItem
+              key={index}
+              onBuy={async () => {
+                await buyNFTs(nft);
+                router.push('/my-nfts');
+              }}
+              {...nft}
+            />
           ))}
         </div>
       </div>
