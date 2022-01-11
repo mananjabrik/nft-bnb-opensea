@@ -13,11 +13,11 @@ async function main() {
   console.log('nft contract deploy to:', nftMarket.address);
 
   let config = ` 
-export const nftmarketaddress = ${nftMarket.address}
-export const nftaddress = ${nft.address}
+export const nftmarketaddressRopsten = ${nftMarket.address}
+export const nftaddressRoptsen = ${nft.address}
 `;
   let data = JSON.stringify(config);
-  fs.writeFileSync('config.js', JSON.parse(data));
+  fs.writeFileSync('ropstenConfig.js', JSON.parse(data));
 }
 
 main()
